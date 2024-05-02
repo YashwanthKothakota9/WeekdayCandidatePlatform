@@ -1,7 +1,13 @@
+import { Container } from '@mui/material';
 import './App.css';
+import BasicCard from './components/BasicCard';
 
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <Container>
+      <BasicCard />
+    </Container>
+  );
 }
 
 export default App;
