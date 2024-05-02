@@ -1,8 +1,31 @@
 import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import { grey } from '@mui/material/colors';
+import React from 'react';
 
-const BasicCard = () => {
+interface BasicCardProps {
+  role: string;
+  location: string;
+  details: string;
+  link: string;
+  minSalary: number | null;
+  maxSalary: number | null;
+  currency: string;
+  minExp: number | null;
+  maxExp: number | null;
+}
+
+const BasicCard: React.FC<BasicCardProps> = ({
+  role,
+  location,
+  details,
+  link,
+  minSalary,
+  maxSalary,
+  currency,
+  minExp,
+  maxExp,
+}) => {
   return (
     <Card
       elevation={2}
@@ -16,26 +39,24 @@ const BasicCard = () => {
             <RecommendIcon sx={{ width: 35, height: 35 }} />
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <Typography variant="h6">Role</Typography>
+            <Typography variant="h6">{role}</Typography>
             <Typography variant="overline" display="block">
-              Location
+              {location}
             </Typography>
           </Box>
         </Box>
 
         <Typography sx={{ mt: 2, fontWeight: 'bold' }} fontSize={14}>
-          Estimated Salary:$
+          Estimated Salary in {currency} : {minSalary ?? maxSalary}
         </Typography>
         <Typography sx={{ mt: 2 }} variant="h6">
           About Company:{' '}
         </Typography>
         <Typography sx={{ mt: 2 }} variant="body2">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          nesciunt cumque dignissimos sint sapiente officiis adipisci impedit a
-          corporis. Iure illum neque quis assumenda molestiae.
+          {details}
         </Typography>
         <Typography sx={{ mt: 2 }} variant="caption" display="block">
-          Minimum Experience:{' '}
+          Minimum Experience:{minExp ?? maxExp}
         </Typography>
         <Button
           sx={{
@@ -48,7 +69,7 @@ const BasicCard = () => {
             },
           }}
           variant="contained"
-          href=""
+          href={link}
         >
           Easy Apply
         </Button>
