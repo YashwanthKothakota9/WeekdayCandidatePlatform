@@ -1,30 +1,57 @@
-# React + TypeScript + Vite
+<div align='center'>
+    <h1 align='center'>WeekDay - Candidate Application Platform</h1>
+    <h3>This is a testing project for the role of SDE-1 Frontend in Weekday</h3>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br/>
 
-Currently, two official plugins are available:
+This is a Weekday Candidate application Platform which displays all jobs from this [Weekday's API]("https://api.weekday.technology/adhoc/getSampleJdJSON").
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
 
-## Expanding the ESLint configuration
+![Platform GIF](.github/images/Weekday.gif)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Job Cards**: Each job listing displayed with as a card with JobTitle, Location, Salary, Job description (limited to a certain number of characters with an option to expand), Experience required, Apply button/link.
+- **Filters**: Can apply filters to refine job listings based on Experience, Salary, Location, Role.
+- **Infinite Scroll**: Where user can just scroll to the bottom of page to load more jobs.
+- **Responsive**: Completely responsive and works well on all screen sizes including mobiles.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Tech Stack
+
+- [React](https://react.dev/) - Library for Frontend
+- [Redux Toolkit](https://redux-toolkit.js.org/tutorials/rtk-query) - State Management
+- [Material UI](https://mui.com/) - Components and Styles
+
+## Getting Started
+
+### Prerequisites
+
+Here's what you need to be able to run this platform:
+
+- Node.js (version >= 18)
+- bun package manager(To install bun run `npm install -g bun`)
+
+### 1. Clone the repository
+
+```shell
+git clone https://github.com/YashwanthKothakota9/WeekdayCandidatePlatform.git
+cd WeekdayCandidatePlatform
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2. Install all dependencies
+
+```shell
+bun install
+```
+
+### 3. Run the dev server
+
+```shell
+bun run dev
+```
+
+### 4. Open the app in your browser
+
+Visit [http://localhost:5173](http://localhost:5173) in your browser.

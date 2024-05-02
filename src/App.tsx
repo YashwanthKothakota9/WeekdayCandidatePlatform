@@ -126,7 +126,7 @@ function App() {
         {error && (
           <Grid item xs={12}>
             <Box sx={{ color: 'error.main', textAlign: 'center' }}>
-              {error.message}
+              {error.toString() ?? 'Error fetching data'}
             </Box>
           </Grid>
         )}
