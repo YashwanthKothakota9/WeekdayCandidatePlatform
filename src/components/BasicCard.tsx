@@ -5,9 +5,8 @@ import { grey } from '@mui/material/colors';
 const BasicCard = () => {
   return (
     <Card
+      elevation={2}
       sx={{
-        maxWidth: 300,
-        p: 2,
         borderRadius: 5,
       }}
     >
@@ -16,7 +15,6 @@ const BasicCard = () => {
           <Box sx={{ backgroundColor: grey[200], p: 2, borderRadius: 5 }}>
             <RecommendIcon sx={{ width: 35, height: 35 }} />
           </Box>
-
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <Typography variant="h6">Role</Typography>
             <Typography variant="overline" display="block">
@@ -24,6 +22,7 @@ const BasicCard = () => {
             </Typography>
           </Box>
         </Box>
+
         <Typography sx={{ mt: 2, fontWeight: 'bold' }} fontSize={14}>
           Estimated Salary:$
         </Typography>
