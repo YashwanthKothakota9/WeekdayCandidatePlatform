@@ -131,7 +131,7 @@ function App() {
           </Grid>
         )}
         {filteredJobs?.map((job) => (
-          <Grid item sm={12} md={6} lg={4} key={job.jdUid}>
+          <Grid item xs={12} sm={6} md={4} lg={4} key={job.jdUid}>
             <BasicCard
               role={job.jobRole}
               location={job.location}

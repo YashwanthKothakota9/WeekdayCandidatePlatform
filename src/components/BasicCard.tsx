@@ -2,6 +2,7 @@ import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import { grey } from '@mui/material/colors';
 import React from 'react';
+import { ExpandableText } from './jobDetails';
 
 interface BasicCardProps {
   role: string;
@@ -39,33 +40,43 @@ const BasicCard: React.FC<BasicCardProps> = ({
             <RecommendIcon sx={{ width: 35, height: 35 }} />
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <Typography variant="h6">{role}</Typography>
+            <Typography variant="h6" sx={{ textTransform: 'capitalize' }}>
+              {role}
+            </Typography>
             <Typography variant="overline" display="block">
               {location}
             </Typography>
           </Box>
         </Box>
 
-        <Typography sx={{ mt: 2, fontWeight: 'bold' }} fontSize={14}>
+        <Typography sx={{ mt: 2, color: grey[600] }} fontSize={14}>
           Estimated Salary in {currency} : {minSalary ?? maxSalary}
         </Typography>
         <Typography sx={{ mt: 2 }} variant="h6">
           About Company:{' '}
         </Typography>
-        <Typography sx={{ mt: 2 }} variant="body2">
+        {/* <Typography sx={{ mt: 2 }} variant="body2">
           {details}
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant="caption" display="block">
-          Minimum Experience:{minExp ?? maxExp ?? 0} years
+        </Typography> */}
+        <ExpandableText text={details} />
+        <Typography
+          sx={{ mt: 2, color: 'GrayText' }}
+          variant="caption"
+          display="block"
+        >
+          {/* Minimum Experience:{minExp ?? maxExp ?? 0} years */}
+          {minExp ?? maxExp
+            ? `Minimum Experience: ${minExp ?? maxExp ?? 0} years`
+            : 'No experience required'}
         </Typography>
         <Button
           sx={{
             mt: 2,
             width: '100%',
-            backgroundColor: '#000',
-            color: '#fff',
+            backgroundColor: '#54efc3',
+            color: '#000',
             '&:hover': {
-              backgroundColor: 'rgba(0,0,0,0.7)',
+              backgroundColor: 'rgba(12, 120, 114, 0.7)',
             },
           }}
           variant="contained"
@@ -77,10 +88,10 @@ const BasicCard: React.FC<BasicCardProps> = ({
           sx={{
             mt: 2,
             width: '100%',
-            backgroundColor: '#000',
+            backgroundColor: '#2747e8',
             color: '#fff',
             '&:hover': {
-              backgroundColor: 'rgba(0,0,0,0.7)',
+              backgroundColor: 'rgba(37, 54, 142, 0.7)',
             },
           }}
           variant="contained"
