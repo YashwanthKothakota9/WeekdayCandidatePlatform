@@ -56,7 +56,7 @@ const BasicCard: React.FC<BasicCardProps> = ({
           {details}
         </Typography>
         <Typography sx={{ mt: 2 }} variant="caption" display="block">
-          Minimum Experience:{minExp ?? maxExp}
+          Minimum Experience:{minExp ?? maxExp ?? 0} years
         </Typography>
         <Button
           sx={{

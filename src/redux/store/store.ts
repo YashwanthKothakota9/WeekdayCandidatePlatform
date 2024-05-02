@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { jobApi } from '../jobSlice';
+import { jobApi, rootReducer } from '../jobSlice';
 
 export const store = configureStore({
-  reducer: {
-    [jobApi.reducerPath]: jobApi.reducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(jobApi.middleware),
 });
