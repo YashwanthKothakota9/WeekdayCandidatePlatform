@@ -10,6 +10,7 @@ import { RootState } from './redux/store/store';
 
 function App() {
   const [offset, setOffset] = useState(0);
+  const [filters, setFilters] = useState<string[]>([]);
   const { data, refetch, isFetching, isLoading, error } =
     useGetSampleJdJSONQuery({
       limit: 10,
@@ -18,6 +19,10 @@ function App() {
 
   const dispatch = useDispatch();
   const jobs = useSelector((state: RootState) => state.jobSlice.jdList);
+
+  const applyFilters = (roles: string[]) => {
+    setFilters([...roles]);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -48,6 +53,11 @@ function App() {
     }
   }, [data, dispatch]);
 
+  const filteredJobs =
+    filters.length > 0
+      ? jobs.filter((job) => filters.includes(job.jobRole))
+      : jobs;
+
   return (
     <Container sx={{ p: 2 }}>
       <Box
@@ -59,10 +69,10 @@ function App() {
           flexWrap: 'wrap',
         }}
       >
-        <MultipleSelect />
-        <MultipleSelect />
-        <MultipleSelect />
-        <MultipleSelect />
+        <MultipleSelect onFilterChange={applyFilters} />
+        {/* <MultipleSelect onFilterChange={applyFilters} />
+        <MultipleSelect onFilterChange={applyFilters} />
+        <MultipleSelect onFilterChange={applyFilters} /> */}
       </Box>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {isLoading && (
@@ -79,7 +89,7 @@ function App() {
             </Box>
           </Grid>
         )}
-        {jobs?.map((job) => (
+        {filteredJobs?.map((job) => (
           <Grid item sm={12} md={6} lg={4} key={job.jdUid}>
             <BasicCard
               role={job.jobRole}

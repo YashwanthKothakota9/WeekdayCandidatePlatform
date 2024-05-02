@@ -20,17 +20,20 @@ const MenuProps = {
 
 const roles = ['frontend', 'backend', 'ios', 'android', 'tech lead'];
 
-export default function MultipleSelect() {
+interface MultiSelectProps {
+  onFilterChange: (roles: string[]) => void;
+}
+
+export default function MultipleSelect({ onFilterChange }: MultiSelectProps) {
   const [role, setRole] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof role>) => {
+  const handleChange = (event: SelectChangeEvent<typeof roles>) => {
     const {
       target: { value },
     } = event;
-    setRole(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    );
+    onFilterChange([...value]);
+    console.log(value);
+    setRole(typeof value === 'string' ? value.split(',') : value);
   };
 
   return (
