@@ -6,8 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import { RootState } from '../redux/store/store';
 import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store/store';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,41 +21,43 @@ const MenuProps = {
 };
 
 interface MultiSelectProps {
-  onFilterChange: (roles: string[]) => void;
+  onFilterChange: (locations: string[]) => void;
 }
 
-export default function MultipleSelect({ onFilterChange }: MultiSelectProps) {
+export default function LocationMultipleSelect({
+  onFilterChange,
+}: MultiSelectProps) {
   const jobs = useSelector((state: RootState) => state.jobSlice.jdList);
-  const roles = [...new Set(jobs.map((job) => job.jobRole))];
+  const locations = [...new Set(jobs.map((job) => job.location))];
 
-  const [role, setRole] = React.useState<string[]>([]);
+  const [location, setLocation] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof roles>) => {
+  const handleChange = (event: SelectChangeEvent<typeof locations>) => {
     const {
       target: { value },
     } = event;
     onFilterChange([...value]);
     console.log(value);
-    setRole(typeof value === 'string' ? value.split(',') : value);
+    setLocation(typeof value === 'string' ? value.split(',') : value);
   };
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="job-role">Role</InputLabel>
+        <InputLabel id="job-role">Location</InputLabel>
         <Select
           labelId="job-role"
           id="multiple-checkbox"
           multiple
-          value={role}
+          value={location}
           onChange={handleChange}
           input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {roles.map((name) => (
+          {locations.map((name) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={role.indexOf(name) > -1} />
+              <Checkbox checked={location.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
