@@ -21,6 +21,7 @@ This is a Weekday Candidate application Platform which displays all jobs from th
 ## Tech Stack
 
 - [React](https://react.dev/) - Library for Frontend
+- [Typescript](https://www.typescriptlang.org/) – Language
 - [Redux Toolkit](https://redux-toolkit.js.org/tutorials/rtk-query) - State Management
 - [Material UI](https://mui.com/) - Components and Styles
 
