@@ -24,6 +24,7 @@ This is a Weekday Candidate application Platform which displays all jobs from th
 - [Typescript](https://www.typescriptlang.org/) – Language
 - [Redux Toolkit](https://redux-toolkit.js.org/tutorials/rtk-query) - State Management
 - [Material UI](https://mui.com/) - Components and Styles
+- [Vite](https://vitejs.dev/) - Frontend Tooling
 
 ## Getting Started
 
